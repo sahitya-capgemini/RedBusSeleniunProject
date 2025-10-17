@@ -1,0 +1,169 @@
+
+@bookTrains @positiveTrainSearch
+Scenario Outline: Search trains with valid source and destination, filter by 2AC and time range # src/test/resources/Features/BookTrain.feature:26
+  Given the user is on the RedBus Railways page                                                 # com.setup.BaseSteps.the_user_is_on_the_red_bus_railways_page()
+  When the user enters source as 0 and destination as 1                                         # com.stepdefinition.BookTrain.the_user_enters_source_as_and_destination_as(java.lang.Integer,java.lang.Integer)
+  And selects the date of travel                                                                # com.stepdefinition.BookTrain.selects_the_date_of_travel()
+  And clicks on the search button                                                               # com.stepdefinition.BookTrain.clicks_on_the_search_button()
+  Then the user is navigated to the results page                                                # com.stepdefinition.BookTrain.the_user_is_navigated_to_the_results_page()
+  When the user filters for class 2AC                                                           # com.stepdefinition.BookTrain.the_user_filters_for_class_2ac()
+  Then the system should display the availability status for the first train                    # com.stepdefinition.BookTrain.the_system_should_display_the_availability_status_for_the_first_train()
+
+@bookTrains @positiveTrainSearch
+Scenario Outline: Search trains with valid source and destination, filter by 2AC and time range # src/test/resources/Features/BookTrain.feature:27
+  Given the user is on the RedBus Railways page                                                 # com.setup.BaseSteps.the_user_is_on_the_red_bus_railways_page()
+  When the user enters source as 0 and destination as 2                                         # com.stepdefinition.BookTrain.the_user_enters_source_as_and_destination_as(java.lang.Integer,java.lang.Integer)
+  And selects the date of travel                                                                # com.stepdefinition.BookTrain.selects_the_date_of_travel()
+  And clicks on the search button                                                               # com.stepdefinition.BookTrain.clicks_on_the_search_button()
+  Then the user is navigated to the results page                                                # com.stepdefinition.BookTrain.the_user_is_navigated_to_the_results_page()
+  When the user filters for class 2AC                                                           # com.stepdefinition.BookTrain.the_user_filters_for_class_2ac()
+  Then the system should display the availability status for the first train                    # com.stepdefinition.BookTrain.the_system_should_display_the_availability_status_for_the_first_train()
+
+@bookTrains @negativeTrainSearch
+Scenario Outline: Search trains with missing or invalid source and destination # src/test/resources/Features/BookTrain.feature:43
+  Given the user is on the RedBus Railways page                                # com.setup.BaseSteps.the_user_is_on_the_red_bus_railways_page()
+  When the user enters source as 1 and destination as 1                        # com.stepdefinition.BookTrain.the_user_enters_source_as_and_destination_as(java.lang.Integer,java.lang.Integer)
+  And selects the date of travel                                               # com.stepdefinition.BookTrain.selects_the_date_of_travel()
+  And clicks on the search button                                              # com.stepdefinition.BookTrain.clicks_on_the_search_button()
+  Then the user should remain on the same page                                 # com.stepdefinition.BookTrain.the_user_should_remain_on_the_same_page()
+  And an error message should be displayed indicating invalid station input    # com.stepdefinition.BookTrain.an_error_message_should_be_displayed_indicating_invalid_station_input()
+
+@bookTrains @negativeTrainSearch
+Scenario Outline: Search trains with missing or invalid source and destination # src/test/resources/Features/BookTrain.feature:44
+  Given the user is on the RedBus Railways page                                # com.setup.BaseSteps.the_user_is_on_the_red_bus_railways_page()
+  When the user enters source as 1 and destination as 2                        # com.stepdefinition.BookTrain.the_user_enters_source_as_and_destination_as(java.lang.Integer,java.lang.Integer)
+  And selects the date of travel                                               # com.stepdefinition.BookTrain.selects_the_date_of_travel()
+  And clicks on the search button                                              # com.stepdefinition.BookTrain.clicks_on_the_search_button()
+  Then the user should remain on the same page                                 # com.stepdefinition.BookTrain.the_user_should_remain_on_the_same_page()
+  And an error message should be displayed indicating invalid station input    # com.stepdefinition.BookTrain.an_error_message_should_be_displayed_indicating_invalid_station_input()
+
+@bookTrains @sortAndFilterTrains
+Scenario Outline: Search and filter trains from Delhi to Mumbai with various filters and sorting # src/test/resources/Features/BookTrain.feature:64
+  Given the user is on the RedBus Railways page                                                  # com.setup.BaseSteps.the_user_is_on_the_red_bus_railways_page()
+  When the user enters source as 0 and destination as 1                                          # com.stepdefinition.BookTrain.the_user_enters_source_as_and_destination_as(java.lang.Integer,java.lang.Integer)
+  And selects the date of travel                                                                 # com.stepdefinition.BookTrain.selects_the_date_of_travel()
+  And clicks on the search button                                                                # com.stepdefinition.BookTrain.clicks_on_the_search_button()
+  Then the user is navigated to the results page                                                 # com.stepdefinition.BookTrain.the_user_is_navigated_to_the_results_page()
+  When the user filters for class 3AC                                                            # com.stepdefinition.BookTrain.the_user_filters_for_class_3ac()
+  And the user clears all filters                                                                # com.stepdefinition.BookTrain.the_user_clears_all_filters()
+  And the user changes the quota to Ladies                                                       # com.stepdefinition.BookTrain.the_user_changes_the_quota_to_ladies()
+  And the user sorts the results by Departure Time                                               # com.stepdefinition.BookTrain.the_user_sorts_the_results_by_departure_time()
+  Then the results should be sorted in ascending order                                           # com.stepdefinition.BookTrain.the_results_should_be_sorted_in_ascending_order()
+
+@bookTrains @sortAndFilterTrains
+Scenario Outline: Search and filter trains from Delhi to Mumbai with various filters and sorting # src/test/resources/Features/BookTrain.feature:65
+  Given the user is on the RedBus Railways page                                                  # com.setup.BaseSteps.the_user_is_on_the_red_bus_railways_page()
+  When the user enters source as 0 and destination as 2                                          # com.stepdefinition.BookTrain.the_user_enters_source_as_and_destination_as(java.lang.Integer,java.lang.Integer)
+  And selects the date of travel                                                                 # com.stepdefinition.BookTrain.selects_the_date_of_travel()
+  And clicks on the search button                                                                # com.stepdefinition.BookTrain.clicks_on_the_search_button()
+  Then the user is navigated to the results page                                                 # com.stepdefinition.BookTrain.the_user_is_navigated_to_the_results_page()
+  When the user filters for class 3AC                                                            # com.stepdefinition.BookTrain.the_user_filters_for_class_3ac()
+  And the user clears all filters                                                                # com.stepdefinition.BookTrain.the_user_clears_all_filters()
+  And the user changes the quota to Ladies                                                       # com.stepdefinition.BookTrain.the_user_changes_the_quota_to_ladies()
+  And the user sorts the results by Departure Time                                               # com.stepdefinition.BookTrain.the_user_sorts_the_results_by_departure_time()
+  Then the results should be sorted in ascending order                                           # com.stepdefinition.BookTrain.the_results_should_be_sorted_in_ascending_order()
+
+@bookTrains @addPassenger
+Scenario Outline: Go to Passenger details page after searching for trains # src/test/resources/Features/BookTrain.feature:82
+  Given the user is on the RedBus Railways page                           # com.setup.BaseSteps.the_user_is_on_the_red_bus_railways_page()
+  When the user enters source as 0 and destination as 1                   # com.stepdefinition.BookTrain.the_user_enters_source_as_and_destination_as(java.lang.Integer,java.lang.Integer)
+  And selects the date of travel                                          # com.stepdefinition.BookTrain.selects_the_date_of_travel()
+  And clicks on the search button                                         # com.stepdefinition.BookTrain.clicks_on_the_search_button()
+  Then the user is navigated to the results page                          # com.stepdefinition.BookTrain.the_user_is_navigated_to_the_results_page()
+  When the user filters for class 3AC                                     # com.stepdefinition.BookTrain.the_user_filters_for_class_3ac()
+  And the user clicks on the first available seat to book if available    # com.stepdefinition.BookTrain.the_user_clicks_on_the_first_available_seat_to_book_if_available()
+  Then the user should be navigated to the passenger details page         # com.stepdefinition.BookTrain.the_user_should_be_navigated_to_the_passenger_details_page()
+      java.lang.AssertionError: Unexpected error during navigation check.
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.stepdefinition.BookTrain.the_user_should_be_navigated_to_the_passenger_details_page(BookTrain.java:253)
+	at ✽.the user should be navigated to the passenger details page(file:///C:/Users/sahipand/eclipse-workspace/RedBusSeleniumProject/src/test/resources/Features/BookTrain.feature:79)
+
+      org.openqa.selenium.NoSuchSessionException: invalid session id
+Build info: version: '4.20.0', revision: '866c76ca80'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '24'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [0df31af4e3c4c53b9a92dda117935cb0, screenshot {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.77, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\sahipand\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49852}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49852/devtoo..., se:cdpVersion: 141.0.7390.77, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0df31af4e3c4c53b9a92dda117935cb0
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:591)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:595)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:321)
+	at com.parameters.ScreenshotUtil.captureScreenshot(ScreenshotUtil.java:18)
+	at com.hooks.Hooks.tearDown(Hooks.java:35)
+
+
+@bookTrains @addPassenger
+Scenario Outline: Go to Passenger details page after searching for trains # src/test/resources/Features/BookTrain.feature:83
+  Given the user is on the RedBus Railways page                           # com.setup.BaseSteps.the_user_is_on_the_red_bus_railways_page()
+      org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=141.0.7390.77)
+Build info: version: '4.20.0', revision: '866c76ca80'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '24'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [8d564548bf968dc8544e723e99363743, findElement {using=css selector, value=img[title='Online Train Tickets Booking']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.77, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\sahipand\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52822}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52822/devtoo..., se:cdpVersion: 141.0.7390.77, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8d564548bf968dc8544e723e99363743
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.click(Unknown Source)
+	at com.pages.HomePage.clickOnRailwaysPage(HomePage.java:19)
+	at com.setup.BaseSteps.the_user_is_on_the_red_bus_railways_page(BaseSteps.java:17)
+	at ✽.the user is on the RedBus Railways page(file:///C:/Users/sahipand/eclipse-workspace/RedBusSeleniumProject/src/test/resources/Features/BookTrain.feature:7)
+
+  When the user enters source as 0 and destination as 2                   # com.stepdefinition.BookTrain.the_user_enters_source_as_and_destination_as(java.lang.Integer,java.lang.Integer)
+  And selects the date of travel                                          # com.stepdefinition.BookTrain.selects_the_date_of_travel()
+  And clicks on the search button                                         # com.stepdefinition.BookTrain.clicks_on_the_search_button()
+  Then the user is navigated to the results page                          # com.stepdefinition.BookTrain.the_user_is_navigated_to_the_results_page()
+  When the user filters for class 3AC                                     # com.stepdefinition.BookTrain.the_user_filters_for_class_3ac()
+  And the user clicks on the first available seat to book if available    # com.stepdefinition.BookTrain.the_user_clicks_on_the_first_available_seat_to_book_if_available()
+  Then the user should be navigated to the passenger details page         # com.stepdefinition.BookTrain.the_user_should_be_navigated_to_the_passenger_details_page()
+      org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=141.0.7390.77)
+Build info: version: '4.20.0', revision: '866c76ca80'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '24'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [8d564548bf968dc8544e723e99363743, screenshot {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 141.0.7390.77, chrome: {chromedriverVersion: 141.0.7390.78 (2b53b0e231fc..., userDataDir: C:\Users\sahipand\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:52822}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:52822/devtoo..., se:cdpVersion: 141.0.7390.77, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8d564548bf968dc8544e723e99363743
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:591)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:595)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:321)
+	at com.parameters.ScreenshotUtil.captureScreenshot(ScreenshotUtil.java:18)
+	at com.hooks.Hooks.tearDown(Hooks.java:35)
+
